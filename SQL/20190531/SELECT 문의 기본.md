@@ -28,7 +28,7 @@ SELECT ENAME,SAL, SAL*12 AS ASAL, DEPTNO AS DNO FROM EMP;
 SAL*12를 ASAL처럼
 SELECT ENAME,SAL, SAL*12 AS "ANN SAL", DEPTNO AS DNO FROM EMP;
 띄어쓰기 를 위해서 "" 안에 넣음
--- AS로 사용된 별명은 WHERE에서 인식하지 않음
+
 
 ```
 
@@ -50,26 +50,19 @@ SELECT ENAME||' '||JOB AS ENAMEANDJOB FROM EMP; 사이가 한칸 띄어짐
 #### DISTINCT
 
 ``` SQL
-SELECT DISTINCT(JOB) FROM EMP
-JOB 에서 중복된 데이터를 제외하고 출력
+SELECT DISTINCT(JOB) FROM EMPJOB
+에서 중복된 데이터를 제외하고 출력
 SELECT * FROM EMP WHERE JOB ='MANAGER'
-JOB이 MANAGER인 사람들만 출력
+JOB이 MANAGER인 사람들만 출력	
 SELECT * FROM EMP WHERE JOB ='MANAGER' AND SAL >2500 AND HIREDATE >'04/15/1981'
 부가적인 조건을 더 붙일수 있음
-SELECT * FROM EMP WHERE JOB ='MANAGER' AND ENAME LIKE '%A%'
-ENAME 에서 A가 포함된것을 출력 EX) %c c로 끝나는것 출력
+SELECT * FROM EMP WHERE JOB ='MANAGER' AND ENAME LIKE '%A%'ENAME 
+에서 A가 포함된것을 출력 EX) %c c로 끝나는것 출력
 -- 주석은 이렇게 사용 /**/ 는 여러줄 주석
-
 SELECT ENAME, SAL, ((SAL*0.87)*12)+((NVL(COMM,0)*0.88)*12) AS SED FROM EMP;
--- NVL을 사용하여 1) 정의 : NULL값을 실제값으로 변환한다.
--- NVL(A,B)  A컬럼에서 널값을 찾아 널값에 B를 채움,  A가 숫자형이면 채우는 B도 동일한 숫자형 이어야 함
-
-
-
-
+-- NVL을 사용하여: NULL값을 실제값으로 변환한다.
+-- NVL(A,B)  A컬럼에서 널값을 찾아 널값에 B를 채움,  A가 숫자형이면 채우는 B도 동일한 숫자형 이어야 함SQL
 ```
-
-
 
 #### 비교연산자
 
@@ -78,6 +71,27 @@ SELECT ENAME, SAL, ((SAL*0.87)*12)+((NVL(COMM,0)*0.88)*12) AS SED FROM EMP;
 NULL 은 비교연산자가 안되기 떄문에
 WHERE * FROM EMP WHERE COMM IS NULL;
 -- 반대는 IS NOT
+
+
+```
+
+#### ORDER BY 구
+
+``` SQL
+SELECT ENAME, SAL FROM EMP ORDER BY ENAME DESC
+ASC(오름차순)/ DESC(내림차순)
+숫자를 사용하여 선택할수도있다 EX) ENAME > 1
+
+SELECT ENAME, SAL, SAL*12 AS ASAL FROM EMP
+WHERE SAL >1000
+AND DEPTNO=20
+ORDER BY ASAL ASC
+
+SELECT * FROM EMP
+WHERE MGR IS NOT NULL
+ORDER BY MGR,ENAME
+;
+-- MGR로 정렬하고 ENAME으로 다시정렬 
 ```
 
 ### Foreign key
