@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<style>
+/* Global CSS */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+ul, ol {
+	list-style: none;
+}
+
+header, section, footer {
+	margin: 0 auto;
+}
+/*Header css */
+header {
+	width: 800px;
+	height: 200px;
+	background-image: url("test.jpg");
+	position: relative;
+}
+
+header>#top_nav {
+	position: absolute;
+	height: 30px;
+	width: 200px;
+	right: 1px;
+	top: 1px;
+	font-size: 0.6em;
+	right: 1px
+}
+
+header>hgroup {
+	height: 80px;
+	padding-top: 30px;
+	text-align: center;
+	font-size: 1.3em;
+	text-align: center;
+}
+
+header>hgroup:hover {
+	height: 80px;
+	padding-top: 30px;
+	text-align: center;
+	font-size: 1.6em;
+	text-align: center;
+}
+
+header>#main_nav {
+	width: 400px;
+	margin: 0 auto;
+	height: 40px;
+	font-size: 1.3em;
+}
+
+header>#top_nav>ul>li {
+	float: left;
+	margin: 0 5px;
+}
+
+header>#main_nav>ul>li {
+	float: left;
+	margin: 0 20px;
+}
+/*Section css*/
+Section {
+	width: 800px;
+	height: 500px;
+	background: gray;
+}
+
+#left_aside {
+	float: left;
+	width: 150px;
+	height: 500px;
+	background-image: url("test2.jpg");
+}
+
+section>#left_aside>ul>li {
+	text-align: center;
+	color: white; 
+	font-size: 1.5em;
+	margin: 30px 30px;
+}
+section>#left_aside>ul>li>a {
+	color: white; 
+}
+
+section>#left_aside>ul: hover {
+	color: fuchsia; 	
+	font-size: 1.8em;
+}
+
+#center_aside {
+	float: left;
+	width: 550px;
+	height: 500px;
+	background-color: white;
+}
+
+#center_aside>nav>table {
+	margin: 0 auto;
+	height: 170px;
+	padding-top: 30px;
+}
+
+#center_aside>nav>table>td, th {
+	color: black;
+	background-image: url("images.jpg");
+	border: 1px solid blue;
+}
+
+#center_aside>#field {
+	margin: 0 auto;
+	height: 170px;
+	width: 200px;
+}
+
+#center_aside>#picture {
+	margin: 0 auto;
+}
+
+#right_aside {
+	float: left;
+	width: 100px;
+	height: 500px;
+	background: blue;
+}
+
+#right_aside>img {
+	margin: 5px 10px;
+}
+/*Footer css*/
+footer {
+	width: 800px;
+	height: 50px;
+	background: black;
+}
+</style>
+<title>Insert title here</title>
+</head>
+<body>
+	<header>
+		<nav id="top_nav">
+			<ul>
+				<li><a href=" ">Login</a></li>
+				<li><a href=" ">REGISETER</a></li>
+				<li><a href=" ">ABOUT US</a></li>
+				<li><a href=" ">USMAP</a></li>
+			</ul>
+		</nav>
+		<hgroup>
+			<h1>W2C School</h1>
+		</hgroup>
+		<nav id="main_nav">
+			<ul>
+				<li><a href=" ">HTML5</a></li>
+				<li><a href=" ">CSS</a></li>
+				<li><a href=" ">AJAX</a></li>
+				<li><a href=" ">QUERY</a></li>
+			</ul>
+
+		</nav>
+	</header>
+	<section>
+		<aside id="left_aside">
+			<ul>
+				<li><a href=" ">Cars</a></li>
+				<li><a href=" ">Motors</a></li>
+				<li><a href=" ">Speed</a></li>
+				<li><a href=" ">Driver</a></li>
+			</ul>
+
+		</aside>
+		<aside id="center_aside">
+			<nav>
+				<table border="1">
+					<tr>
+						<th colspan="5">자동차</th>
+					<tr>
+						<th>BMW</th>
+						<th>Benz</th>
+						<th>현대자동차</th>
+						<th>기아자동차</th>
+						<th>아우디</th>
+					</tr>
+					<tr>
+						<td>CORONA</td>
+						<td>CROWN</td>
+						<td>FIAT</td>
+						<td>GRAND</td>
+						<td>NUBIRA</td>
+				</table>
+			</nav>
+			<nav id="field">
+
+				<form action="" method="post">
+
+					<fieldset>
+						<legend>인적사항 입력</legend>
+						<select name="cars">
+							<option value="bmw">BMW</option>
+							<option value="benz">Benz</option>
+							<option value="hyundai" selected>현대자동차</option>
+							<option value="kia">기아자동차</option>
+							<option value="audi">아우디</option>
+
+						</select> <br> 이름: <input type="text"><br> 전화번호: <input
+							type="text"><br> 주소 : <input type="text"> <input
+							type="submit">
+					</fieldset>
+
+
+
+				</form>
+			</nav>
+
+			<nav id="picture">
+				<img src="car1.jpg" width="130" height="130"> <img
+					src="car2.jpg" width="130" height="130"> <img src="car3.jpg"
+					width="130" height="130"> <img src="car4.jpg" width="130"
+					height="130">
+
+
+			</nav>
+
+		</aside>
+		<aside id="right_aside">
+			<img src="https://via.placeholder.com/80x150"> <img
+				src="https://via.placeholder.com/80x150"> <img
+				src="https://via.placeholder.com/80x150">
+
+		</aside>
+	</section>
+	<footer></footer>
+
+</body>
+</html>
