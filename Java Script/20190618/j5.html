@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style>
+input[type="text"]:focus {
+	background: red;
+}
+
+input[type="number"]:focus {
+	background: red;
+}
+
+input[type="radio"]:checked+label:before {
+	background: red;
+	border-color: red;
+}
+
+select {
+	background: red;
+}
+</style>
+<script>
+	function login(f) {
+		var id = f.id.value;
+		var pwd = f.pwd.value;
+		var pwd2 = f.pwd2.value;
+		var r = document.getElementById('result');
+		var r2 = document.getElementById('pwd');
+		var r3 = document.getElementById('pwd2');
+
+		if (id == '' || id == null) {
+			r.style.color = 'red';
+			r.innerHTML = 'ID is Mandatory';
+			f.id.focus();
+			return;
+		}
+		
+			if (pwd.length < 4) {
+				r2.innerHTML = 'Not Enough length!';
+				f.pwd.focus();
+				
+				if (pwd == '' || pwd == null) {
+					r2.innerHTML = 'Madatory field';
+					f.pwd.focus();
+				}			
+				if (pwd2.length < 4) {
+					r3.innerHTML = 'Not Enough length!';
+					f.pwd2.focus();
+				}
+				if (pwd2 == '' || pwd2 == null) {
+					r3.innerHTML = 'Madatory field';
+					r.pwd2.focus();
+
+				}
+				return;
+			}
+			if (pwd != pwd2) {
+				alert("pwd 불일치");
+				f.pwd2.focus();
+				f.pwd.focus();
+				return;
+			}		
+		
+
+		var c = confirm('Are you Login ?');
+		if (c == true) {
+			f.submit();
+		}
+	};
+</script>
+</head>
+<body>
+	<form action="login" method="get">
+		ID<input type="text" name="id"><a id="result"></a><br>
+		PWD<input type="text" name="pwd"><a id="pwd"></a><br> PWD<input
+			type="text" name="pwd2"><a id="pwd2"></a><br> HINT<select
+			name="hint">
+			<option value="1">1</option>
+			<option value="2" selected>2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+		</select><br> HOBBY <label for="train">TRAIN</label> <input type="radio"
+			name="hobby" id="train" value="train"> <label for="train">STUDY</label>
+		<input type="radio" name="hobby" id="study" value="study"> <label
+			for="train">MUSIC</label> <input type="radio" name="hobby" id="music"
+			value="music"> <br> AGE<input type='number' name="age">
+		<input onclick="login(this.form);" type="button" value="login">
+	</form>
+</body>
+</html>
