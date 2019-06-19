@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+table{
+	border-collapse: collapse;
+}
+td {
+    padding: 5px 10px;
+    text-align: center;
+	
+}
+tr#up{
+	background-color: aliceblue;
+}
+tr#down{
+	background-color: palevioletred;
+}
+input {
+	width:40px;
+	height:40px;
+	text-align: center;
+    border: none;
+}
+#display{
+	text-align :right;
+	width: 230px;
+}
+#clear{
+	width:230px;
+}
+#equal{
+	height:88px;
+}
+input:hover{
+	background-color: lightslategray;
+}
+</style>
+<script>
+	var disp='';
+	var add = function(data){
+		
+	
+		var display = document.getElementById('display');
+		var result = disp+data;
+		disp=result;
+		
+		display.value=disp;
+	};
+	var del = function(){
+		disp='';
+		display.value=disp;
+	};
+	var sol = function() {
+			var display = document.getElementById('display');
+			
+			try{
+			var result = eval(display.value); 
+			}
+			catch(error){
+				msg="오류 발생하였음: " + error.message;
+				alert(msg);
+				disp='';
+			}
+			disp='';
+   
+			display.value = result;
+        };
+
+
+</script>
+</head>
+<body>
+ <table border="1">
+        <tr>
+            <td colspan="4">
+                <input readonly="readonly" type="text" id="display">
+            </td>
+        </tr>        
+        <tr id="up">
+            <td colspan="4"><input type="button" value="C" id="clear" onclick="del();"></td>
+        </tr>
+        <tr id="up">
+            <td><input type="button" value="+" onclick="add('+');"></td>
+			<td><input type="button" value="-" onclick="add('-');"></td>
+            <td><input type="button" value="X" onclick="add('*');"></td>
+            <td><input type="button" value="/" onclick="add('/');"></td>
+        </tr>
+        <tr id="down">
+            <td><input type="button" value="1" onclick="add(1);"></td>
+            <td><input type="button" value="2" onclick="add(2);"></td>
+            <td><input type="button" value="3" onclick="add(3);"></td>
+            <td><input type="button" value="0" onclick="add(0);"></td>
+        </tr>
+        <tr id="down">
+            <td><input type="button" value="4" onclick="add(4);"></td>
+            <td><input type="button" value="5" onclick="add(5);"></td>
+            <td><input type="button" value="6" onclick="add(6);"></td>
+            <td rowspan="2"><input type="button" value="=" onclick="sol();" id="equal"></td>
+        </tr>
+        <tr id="down">
+            <td><input type="button" value="7" onclick="add(7);"></td>
+            <td><input type="button" value="8" onclick="add(8);"></td>
+			<td><input type="button" value="9" onclick="add(9);"></td>
+        </tr>
+
+</body>
+</html>
