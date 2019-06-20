@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+		h2 {
+			border: 1px solid black;
+			text-align: center;
+			width: 500px;
+			background-color:#CC723D; 
+			
+		}
+
+		#top {
+			border: 1px solid black;
+			text-align: center;
+			width: 500px;
+			height: 300px;
+			background-color:#CCA63D; 
+			
+		}
+
+		#bot {
+			border: 1px solid black;
+			text-align: center;
+			width: 500px;
+			background-color:#FAF4C0; 
+
+		}
+
+		img {
+			margin-top: 25px;
+			margin-right: 10px;
+			margin-bottom: 25px;
+			border: 1px solid black;
+			width: 100px;
+			height: 100px;
+		}
+
+		#coffee {
+			margin-right: 20px;
+			height: 100px;
+			width: 100px;
+			float: left;
+			margin-top: 25px;
+			margin-left: 25px;
+			background: gray;
+
+		}
+
+		#dessert {
+
+			margin-right: 20px;
+			height: 100px;
+			width: 100px;
+			float: left;
+			margin-top: 25px;
+			margin-left: 25px;
+
+		}
+
+		#dess {
+			display: none;
+		}
+
+		td>input {
+			width: 90px;
+			height: 25px;
+
+		}
+
+		#card {
+			width: 50px;
+			height: 50px;
+		}
+
+		#cash {
+			width: 50px;
+			height: 50px;
+		}
+	</style>
+	<script>
+		//////////////////////// manu 변경 함수 //////////////////
+		var menu = function (data) {
+			if (data == dessert) {
+				document.getElementById('cofe').style.display = 'none';
+				document.getElementById('cofe2').style.display = 'none';
+				document.getElementById('dess').style.display = 'flex';
+				document.getElementById("dessert").style.background = "gray";
+				document.getElementById("coffee").style.background = "buttonface";
+			}
+			else {
+				document.getElementById('cofe').style.display = 'flex';
+				document.getElementById('cofe2').style.display = 'flex';
+				document.getElementById('dess').style.display = 'none';
+				document.getElementById("coffee").style.background = "gray";
+				document.getElementById("dessert").style.background = "buttonface";
+			}
+
+		};
+
+		//////////// 데이터 저장///////////////////////////
+
+
+		var arr = new Array();
+		for (var i = 0; i < 10; i++) {
+
+			arr[i] = new Array();
+			arr[i][0] = 0;
+			arr[i][1] = '';
+			arr[i][2] = 0;
+		}
+
+		/////////// 주문 //////////////////////////////////
+		var order = function (i, menu, money) {
+			arr[i][0]++;
+			arr[i][1] = menu;
+			arr[i][2] = money;
+			document.getElementById('name').innerHTML = '';
+			document.getElementById('money').innerHTML = '';
+			document.getElementById('count').innerHTML = '';
+
+			for (var j = 0; j < 10; j++) {
+				if (arr[j][0] != 0) {
+
+					document.getElementById('name').innerHTML = document.getElementById('name').innerHTML + '<br><br>' + arr[j][1];
+					document.getElementById('money').innerHTML = document.getElementById('money').innerHTML + '<br><br>' + arr[j][2] * arr[j][0];
+					document.getElementById('count').innerHTML = document.getElementById('count').innerHTML + '<br><br>' + arr[j][0];
+				}
+			}
+
+
+		}
+		/////////////// 삭제 ///////////////
+		var del = function () {
+			for (var j = 0; j < 10; j++) {
+				arr[j][0] = 0;
+				arr[j][1] = '';
+				arr[j][2] = 0;
+			}
+
+
+			document.getElementById('name').innerHTML = '';
+			document.getElementById('money').innerHTML = '';
+			document.getElementById('count').innerHTML = '';
+
+
+		}
+		///////////// 결제 //////////////////
+		var pay = function () {
+			var money = 0;
+			for (var j = 0; j < 10; j++) {
+				money += arr[j][2] * arr[j][0];
+			}
+			if (a == 0 && b == 0) {
+				alert("결제수단을 입력해주세요!");
+
+			} else {
+				alert("총 금액 :" + money + "\n" + "결제하시겠습니까?");
+				document.getElementById('name').innerHTML = '';
+				document.getElementById('money').innerHTML = '';
+				document.getElementById('count').innerHTML = '';
+				cnt = 0;
+				del();
+				document.getElementById("card").style.background = "buttonface";
+				a = 0;
+				document.getElementById("cash").style.background = "buttonface";
+				b = 0;
+			}
+
+		}
+
+		/////////////카드/현금//////////////////////
+		var a = 0;
+		var b = 0;
+
+		function payment(type) {
+			if (type == 'card') {
+				if (a == 0) {
+					document.getElementById("card").style.background = "gray";
+					document.getElementById("cash").style.background = "buttonface";
+					b = 0;
+					a = 1;
+				} else {
+					document.getElementById("card").style.background = "buttonface";
+					a = 0;
+				}
+			} else {
+				if (b == 0) {
+					document.getElementById("cash").style.background = "gray";
+					document.getElementById("card").style.background = "buttonface";
+					a = 0;
+					b = 1;
+				} else {
+					document.getElementById("cash").style.background = "buttonface";
+					b = 0;
+				}
+
+			}
+		}
+
+	</script>
+</head>
+
+<body>
+	<h2>카페</h2>
+	<section id="top">
+		<input type="button" value="커피" id="coffee" onclick="menu(coffee);">
+		<a id="cofe">
+			<img src="ame.jpg" onmouseover="this.src='change/ameh.png'" onmouseout="this.src='ame.jpg'"
+				onclick="order(0,'아메리카노',1500);" />
+			<img src="iceame.jpg" onmouseover="this.src='change/amei.png'" onmouseout="this.src='iceame.jpg'"
+				onclick="order(1,'아이스아메리카노',2000);" />
+			<img src="moca.gif" onmouseover="this.src='change/mocah.png'" onmouseout="this.src='moca.gif'"
+				onclick="order(2,'모카',2500);" />
+			<br>
+		</a>
+		<a id="dess">
+			<img src="desert/mac.jpg" onmouseover="this.src='change/maca.png'" onmouseout="this.src='desert/mac.jpg'"
+				onclick="order(7,'마카롱',2500);" />
+			<img src="desert/honey.jpg" onmouseover="this.src='change/honey.png'"
+				onmouseout="this.src='desert/honey.jpg'" onclick="order(8,'허니브레드',4000);" />
+			<img src="desert/cake.jpg" onmouseover="this.src='change/cake.png'" onmouseout="this.src='desert/cake.jpg'"
+				onclick="order(9,'조각케익',3500);" />
+		</a>
+		<input type="button" value="디저트 " id="dessert" onclick="menu(dessert);">
+		<a id="cofe2">
+			<img src="latte.jpg" onmouseover="this.src='change/latteh.png'" onmouseout="this.src='latte.jpg'"
+				onclick="order(3,'라떼',3000);" />
+			<img src="icelatte.jpg" onmouseover="this.src='change/lattei.png'" onmouseout="this.src='icelatte.jpg'"
+				onclick="order(4,'아이스라떼',3500);" />
+			<img src="icemoca.jpg" onmouseover="this.src='change/mocai.png'" onmouseout="this.src='icemoca.jpg'"
+				onclick="order(5,'아이스모카',3000);" />
+		</a>
+	</section>
+	<br>
+
+	<section id="bot">
+		<table>
+			<tr>
+				<td><input type="button" value="품명" disabled="disabled"></td>
+				<td><input type="button" value="수량" disabled="disabled"></td>
+				<td><input type="button" value="금액" disabled="disabled"></td>
+				<td><input type="button" value="삭제" onclick="del();"></td>
+				<td><input type="button" value="카드" id="card" onclick="payment('card');"> </td>
+				<td><input type="button" value="현금" id="cash" onclick="payment('cash');"> </td>
+			</tr>
+			<tr id="up">
+				<td id="name"></td>
+				<td id="count"></td>
+				<td id="money"></td>
+				<td></td>
+				<td colspan="2"><input type="button" value="결제" onclick="pay();"></td>
+			</tr>
+		</table>
+	</section>
+
+
+</body>
+
+</html>
