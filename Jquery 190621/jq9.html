@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<style></style>
+	<script>
+	var persion=[
+		{img:'web/m1.jpg',id:"id01",name:"이말숙"},
+
+		{img:'web/m2.jpg',id:"id02",name:"김말숙"},
+		{img:'web/m3.jpg',id:"id03",name:"박말숙"},
+		{img:'web/m4.jpg',id:"id04",name:"최말숙"},
+		{img:'web/m5.jpg',id:"id05",name:"황말숙"}
+	];
+	// $(document).ready(function(){
+	// 	var result= '';
+
+	// 	$(persion).each(function(idx,item){
+	// 		result += '<h1>'+item.id+''+item.name+'</h1>';
+	// 		$('div').html(result);
+	// 	});
+
+	// });
+	$(document).ready(function(){
+	
+
+		$(persion).each(function(idx,item){
+			var result= '';
+			result ='<img src="'+item.img+'">'+item.id+''+item.name+'<br>';
+			$('div').append(result);
+		});
+
+	});
+	</script>
+</head>
+
+<body>
+	<div></div>
+</body>
+
+</html>

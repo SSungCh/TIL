@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<style>
+		h2 {
+			border: 1px solid black;
+			text-align: center;
+			width: 500px;
+			background-color: #CC723D;
+
+		}
+
+		#top {
+			border: 1px solid black;
+			text-align: center;
+			width: 500px;
+			height: 300px;
+			background-color: #CCA63D;
+
+		}
+
+		#bot {
+			border: 1px solid black;
+			text-align: center;
+			width: 500px;
+			background-color: #FAF4C0;
+
+		}
+
+		img {
+			margin-top: 25px;
+			margin-right: 10px;
+			margin-bottom: 25px;
+			border: 1px solid black;
+			width: 100px;
+			height: 100px;
+		}
+
+		#coffee {
+			margin-right: 20px;
+			height: 100px;
+			width: 100px;
+			float: left;
+			margin-top: 25px;
+			margin-left: 25px;
+			background: gray;
+
+		}
+
+		#dessert {
+
+			margin-right: 20px;
+			height: 100px;
+			width: 100px;
+			float: left;
+			margin-top: 25px;
+			margin-left: 25px;
+
+		}
+
+		#dess {
+			display: none;
+		}
+
+		td>input {
+			width: 90px;
+			height: 25px;
+
+		}
+
+		#card {
+			width: 50px;
+			height: 50px;
+		}
+
+		#cash {
+			width: 50px;
+			height: 50px;
+		}
+
+		#del {
+			width: 40px;
+			height: 25px;
+			margin-left: 50px;
+		}
+	</style>
+	<script>
+		//////////////////////// manu 변경 함수 //////////////////
+		var menu = function (data) {
+			if (data == dessert) {
+				document.getElementById('cofe').style.display = 'none';
+				document.getElementById('cofe2').style.display = 'none';
+				document.getElementById('dess').style.display = 'flex';
+				document.getElementById("dessert").style.background = "gray";
+				document.getElementById("coffee").style.background = "buttonface";
+			}
+			else {
+				document.getElementById('cofe').style.display = 'flex';
+				document.getElementById('cofe2').style.display = 'flex';
+				document.getElementById('dess').style.display = 'none';
+				document.getElementById("coffee").style.background = "gray";
+				document.getElementById("dessert").style.background = "buttonface";
+			}
+
+		};
+		var cnt = 0;
+
+		var cafemenu = [
+			{ id: '아메리카노 H', cnt: 0, money: 1500 },
+			{ id: '아메리카노 I', cnt: 0, money: 2000 },
+			{ id: '모카 H', cnt: 0, money: 2500 },
+			{ id: '라떼 H', cnt: 0, money: 3000 },
+			{ id: '라떼 I', cnt: 0, money: 3500 },
+			{ id: '모카 I', cnt: 0, money: 3000 },
+			{ id: '마카롱', cnt: 0, money: 2500 },
+			{ id: '허니브레드', cnt: 0, money: 4000 },
+			{ id: '조각케익', cnt: 0, money: 3500 }
+		];
+
+		$(document).ready(function () {
+			$('img').click(function () {
+				var name2 = this.name;
+				var result = '0';
+				$('#name').empty();
+				$(cafemenu).each(function (idx, item) {
+					if (item.id == name2) {
+						item.cnt++;
+					}
+					if (item.cnt > 0) {
+						result = item.id + '    ' + item.cnt + '    ' + item.money * item.cnt +
+							'<input type="button" value="취소" id="del" name="' + item.id + '">' + '<br>';
+							alert(item.id);
+						$('#name').append(result);
+
+					}
+
+				});
+				$('#del').click(function () {
+					var name = this.name;
+					alert(name);
+					// $('#name').empty();
+					// $(cafemenu).each(function (idx, item) {
+					// 	if (item.id == name2) {
+					// 		item.cnt--;
+					// 	}
+					// 	if (item.cnt > 0) {
+					// 		result = item.id + '    ' + item.cnt + '    ' + item.money * item.cnt +
+					// 			'<input type="button" value="취소" id="del" name="' + item.id + '">' + '<br>';
+					// 		$('#name').append(result);
+
+					// 	}
+					// });
+				});
+
+			});
+
+
+
+		});
+
+	</script>
+</head>
+
+<body>
+	<h2>카페</h2>
+	<section id="top">
+		<input type="button" value="커피" id="coffee" onclick="menu(coffee);">
+		<a id="cofe">
+			<img src="ame.jpg" name="아메리카노 H" onmouseover="this.src='change/ameh.png'"
+				onmouseout="this.src='ame.jpg'" />
+			<img src="iceame.jpg" name="아메리카노 I" onmouseover="this.src='change/amei.png'"
+				onmouseout="this.src='iceame.jpg'" />
+			<img src="moca.gif" name="모카 H" onmouseover="this.src='change/mocah.png'"
+				onmouseout="this.src='moca.gif'" />
+			<br>
+		</a>
+		<a id="dess">
+			<img src="desert/mac.jpg" name="마카롱" onmouseover="this.src='change/maca.png'"
+				onmouseout="this.src='desert/mac.jpg'" />
+			<img src="desert/honey.jpg" name="허니브레드" onmouseover="this.src='change/honey.png'"
+				onmouseout="this.src='desert/honey.jpg'" />
+			<img src="desert/cake.jpg" name="조각케익" onmouseover="this.src='change/cake.png'"
+				onmouseout="this.src='desert/cake.jpg'" />
+		</a>
+		<input type="button" value="디저트 " id="dessert" onclick="menu(dessert);">
+		<a id="cofe2">
+			<img src="latte.jpg" name="라떼 H" onmouseover="this.src='change/latteh.png'"
+				onmouseout="this.src='latte.jpg'" />
+			<img src="icelatte.jpg" name="라떼 I" onmouseover="this.src='change/lattei.png'"
+				onmouseout="this.src='icelatte.jpg'" />
+			<img src="icemoca.jpg" name="모카 I" onmouseover="this.src='change/mocai.png'"
+				onmouseout="this.src='icemoca.jpg'" />
+		</a>
+	</section>
+	<br>
+
+	<section id="bot">
+		<table>
+			<tr>
+				<td><input type="button" value="품명" disabled="disabled"></td>
+				<td><input type="button" value="수량" disabled="disabled"></td>
+				<td><input type="button" value="금액" disabled="disabled"></td>
+				<td><input type="button" value="삭제"></td>
+				<td><input type="button" value="카드" id="card" onclick="payment('card');"> </td>
+				<td><input type="button" value="현금" id="cash" onclick="payment('cash');"> </td>
+			</tr>
+			<tr id="up">
+				<td colspan="4" id="name"></td>
+				<td></td>
+				<td colspan="2"><input type="button" value="결제" onclick="pay();"></td>
+			</tr>
+		</table>
+	</section>
+
+
+</body>
+
+</html>
