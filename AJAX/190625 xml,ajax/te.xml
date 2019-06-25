@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<response>
+	<header>
+		<resultCode>00</resultCode>
+		<resultMsg>NORMAL SERVICE.</resultMsg>
+	</header>
+	<body>
+		<items>
+			<item>
+				<lghtAmp>-56.5</lghtAmp>
+				<lghtDate>20150101135652</lghtDate>
+				<lghtLati>35.5726275</lghtLati>
+				<lghtLong>132.3185335</lghtLong>
+			</item>
+			<item>
+				<lghtAmp>0</lghtAmp>
+				<lghtDate>20150105210448</lghtDate>
+				<lghtLati>35.8332646</lghtLati>
+				<lghtLong>126.7161142</lghtLong>
+			</item>
+			<item>
+				<lghtAmp>-23.3</lghtAmp>
+				<lghtDate>20150105210448</lghtDate>
+				<lghtLati>35.8349261</lghtLati>
+				<lghtLong>126.721683</lghtLong>
+			</item>
+			<item>
+				<lghtAmp>39.7</lghtAmp>
+				<lghtDate>20150105211253</lghtDate>
+				<lghtLati>35.9663957</lghtLati>
+				<lghtLong>126.7620445</lghtLong>
+			</item>
+			<item>
+				<lghtAmp>19.5</lghtAmp>
+				<lghtDate>20150105211253</lghtDate>
+				<lghtLati>35.8754184</lghtLati>
+				<lghtLong>126.7688391</lghtLong>
+			</item>
+			<item>
+				<lghtAmp>28.6</lghtAmp>
+				<lghtDate>20150105211253</lghtDate>
+				<lghtLati>35.8162188</lghtLati>
+				<lghtLong>126.7545662</lghtLong>
+			</item>
+			<item>
+				<lghtAmp>-30.8</lghtAmp>
+				<lghtDate>20150111203330</lghtDate>
+				<lghtLati>36.0811298</lghtLati>
+				<lghtLong>130.3101172</lghtLong>
+			</item>	
+		</items>
+		<numOfRows>10</numOfRows>
+		<pageNo>1</pageNo>
+		<totalCount>7</totalCount>
+	</body>
+</response>
