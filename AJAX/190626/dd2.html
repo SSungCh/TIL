@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<style>
+		div {
+			width: 400px;
+			height: 200px;
+			border: 2px solid red;
+		}
+
+		img {
+			width: 100px;
+			height: 100px;
+		}
+	</style>
+	<script>
+		sessionStorage.cnt=0;
+		function itemdrop(e) {
+			e.preventDefault();
+			var src = e.dataTransfer.getData('m');
+			$('#item').append($('#' + src));
+		};
+		function itemleave(e) { };
+
+		function allewdrop(e) {
+			e.preventDefault();
+		}
+
+		function cartdrop(e) {
+
+			e.preventDefault();
+			var src = e.dataTransfer.getData('m');
+			$('#cart').append($('#' + src));
+			if (sessionStorage.cnt == null || sessionStorage.cnt == 0) {
+				sessionStorage.cnt = 1;
+				$('h3').text(sessionStorage.cnt);
+			} else {
+				var cnt = ++sessionStorage.cnt;
+				
+			}
+			$('h3').text(cnt);
+
+		};
+		function cartleave(e) {
+		};
+
+		function imgdrag(e) {
+			e.dataTransfer.effectAllowed = 'move';
+			e.dataTransfer.setData('m', e.target.id);
+
+		};
+
+
+	</script>
+</head>
+
+<body>
+	<h1>ITEM</h1>
+	<div id="item" ondrop="itemdrop(event)" ondragleave="itemleave(event)" ondragover="allewdrop(event)">
+		<img src="m1.jpg" id="m1" draggable="true" ondragstart="imgdrag(event)">
+		<img src="m2.jpg" id="m2" draggable="true" ondragstart="imgdrag(event)">
+		<img src="m3.jpg" id="m3" draggable="true" ondragstart="imgdrag(event)">
+		<img src="m4.jpg" id="m4" draggable="true" ondragstart="imgdrag(event)">
+	</div>
+	<h1>CART</h1>
+	<h3></h3>
+	<div id="cart" ondrop="cartdrop(event)" ondragleave="cartleave(event)" ondragover="allewdrop(event)"></div>
+</body>
+
+</html>
